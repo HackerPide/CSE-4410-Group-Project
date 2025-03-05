@@ -354,6 +354,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Fireball.cs"
 "Assets/Scripts/FPSInput.cs"
+"Assets/Scripts/GameEvent.cs"
+"Assets/Scripts/Messenger.cs"
 "Assets/Scripts/MouseLook.cs"
 "Assets/Scripts/PlayerCharacter.cs"
 "Assets/Scripts/RayShooter.cs"
