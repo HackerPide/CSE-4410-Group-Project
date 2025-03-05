@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour {
     void Update() {
         if (enemy == null) {
             enemy = Instantiate(enemyPrefab) as GameObject;
-            enemy.transform.position = new Vector3(-20, 5, 0);
+            enemy.transform.position = new Vector3(5, 1, 0);
             float angle = Random.Range(0, 360);
             enemy.transform.Rotate(0, angle, 0);
         }
