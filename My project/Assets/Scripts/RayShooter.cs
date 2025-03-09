@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class RayShooter : MonoBehaviour
 {
+    public int damage = 1;
+    public const int baseDamage = 1;
+
     // Private variable that has a reference to the camera
     private Camera cam;
+
+    private void OnEnable() {
+        Messenger<int>.AddListener(GameEvent.PLAYER_DAMAGE_CHANGED, OnDamageChanged);
+    }
+
+    private void OnDisable()
+    {
+        Messenger<int>.RemoveListener(GameEvent.PLAYER_DAMAGE_CHANGED, OnDamageChanged);
+    }
+
+    private void OnDamageChanged(int value) {
+        damage = baseDamage * value;
+    }
 
     // Start is called before the first frame update
     void Start() {
@@ -45,7 +61,7 @@ public class RayShooter : MonoBehaviour
                 // Otherwise, place a sphere.
                 if (target != null) {
                     //Debug.Log("Target hit!");
-                    target.ReactToHit();
+                    target.ReactToHit(damage);
                 } else {
                     StartCoroutine(SphereIndicator(hit.point));
                 }

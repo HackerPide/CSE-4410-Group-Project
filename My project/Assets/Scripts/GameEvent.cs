@@ -9,7 +9,8 @@ public static class GameEvent
     public const string ENEMY_HEALTH_CHANGED = "ENEMY_HEALTH_CHANGED";
 
     // Player events
-
+    public const string PLAYER_DAMAGE_CHANGED = "PLAYER_DAMAGE_CHANGED";
+    public const string PLAYER_HEALTH_CHANGED = "PLAYER_HEALTH_CHANGED";
 
     // Game events
     public const string NEW_ROUND = "NEW_ROUND";
