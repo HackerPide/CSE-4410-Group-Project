@@ -7,8 +7,9 @@ public class RayShooter : MonoBehaviour
     public int damage = 1;
     public const int baseDamage = 1;
 
-    
-    public GameObject muzzleFlash, bulletHoleGraphic;
+    public Transform attackPoint;
+    public ParticleSystem muzzleFlash;
+    public GameObject bulletHoleGraphic;
 
     // Private variable that has a reference to the camera
     private Camera cam;
@@ -39,6 +40,8 @@ public class RayShooter : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+
+       
         // Run the following code if the player clicks the left mouse button
         if (Input.GetMouseButtonDown(0)) {
             // Use a Vector3 to store the location of the middle of the screen
@@ -49,7 +52,7 @@ public class RayShooter : MonoBehaviour
             // Create a ray by calling ScreenPointToRay
             // Pass in the point, as this is used as the origin for the ray
             Ray ray = cam.ScreenPointToRay(point);
-
+            muzzleFlash.Play();
             // Create a RaycastHit object to figure out where the ray hit
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
@@ -67,6 +70,7 @@ public class RayShooter : MonoBehaviour
                     target.ReactToHit(damage);
                 }
                 Instantiate(bulletHoleGraphic, hit.point, Quaternion.Euler(0, 180, 0));
+                
             }
         }
     }
