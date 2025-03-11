@@ -41,9 +41,9 @@ public class ScoreManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
-        //TODO Create Logic for accurately assessing points on enemy kills. Also create logic for keeping high score.
-        //Completed by Cam
-    }*/
+        scoreText.text = score.ToString() + " Points";
+        highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+    }
 }
