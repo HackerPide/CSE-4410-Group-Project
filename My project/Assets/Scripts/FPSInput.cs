@@ -7,27 +7,35 @@ using UnityEngine;
 public class FPSInput : MonoBehaviour {
     public float speed = 6.0f;
     public float gravity = -9.8f;
-	public bool allowedToMove = true;
+	public bool alive = true;
 
     private CharacterController charController;
-	private PlayerCharacter player;
 
     void Start() {
-		player = GameObject.FindObjectOfType<PlayerCharacter>();
         charController = GetComponent<CharacterController>();
     }
-	
-	private void SetMovement() {
-		if (player.health <= 0)
-			allowedToMove = false;
-		else
-			allowedToMove = true;
+
+    private void OnEnable() {
+		Messenger.AddListener(GameEvent.PLAYER_LIFE_STATUS, OnPlayerLifeChange);
+    }
+
+    private void OnDisable()
+    {
+        Messenger.RemoveListener(GameEvent.PLAYER_LIFE_STATUS, OnPlayerLifeChange);
+    }
+
+    private void OnPlayerLifeChange() {
+		if (alive == true) {
+			alive = false;
+		}
+		else {
+			alive = true;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update() {
-		SetMovement();
-		if (allowedToMove) {
+
+    // Update is called once per frame
+    void Update() {
+		if (alive) {
 			float deltaX = Input.GetAxis("Horizontal") * speed;
 			float deltaZ = Input.GetAxis("Vertical") * speed;
 			

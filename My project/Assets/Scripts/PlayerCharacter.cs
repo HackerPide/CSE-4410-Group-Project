@@ -25,6 +25,8 @@ public class PlayerCharacter : MonoBehaviour {
 
     public void Hurt(int damage) {
         health -= damage;
-        Debug.Log($"Health: {health}");
+        if (health <= 0) {
+            Messenger.Broadcast(GameEvent.PLAYER_LIFE_STATUS);
+        }
     }
 }
