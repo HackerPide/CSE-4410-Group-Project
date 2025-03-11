@@ -20,5 +20,11 @@ public class DoorDevice : MonoBehaviour
 				}
 			}
 		}
+		if (Input.GetKeyDown(KeyCode.B)) {
+			Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
+			foreach (Collider hitCollider in hitColliders) {
+				hitCollider.SendMessage("OperateB", SendMessageOptions.DontRequireReceiver);
+			}
+		}
 	}
 }

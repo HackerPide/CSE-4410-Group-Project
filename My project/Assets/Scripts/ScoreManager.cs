@@ -9,8 +9,11 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreText;
     public TMP_Text highscoreText;
+    public TMP_Text goldText;
+    public GameObject mc;
     int score = 0;
     int highscore = 0;
+    int gold;
 
     private void OnEnable() {
         Messenger.AddListener(GameEvent.ENEMY_DEATH, OnScoreChange);
@@ -38,12 +41,18 @@ public class ScoreManager : MonoBehaviour
     {
         scoreText.text = score.ToString() + " Points";
         highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+        PlayerCharacter player = mc.GetComponent<PlayerCharacter>();
+        gold = player.getGold();
+        goldText.text = "Gold: " + gold.ToString();
     }
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
-        //TODO Create Logic for accurately assessing points on enemy kills. Also create logic for keeping high score.
-        //Completed by Cam
-    }*/
+        scoreText.text = score.ToString() + " Points";
+        highscoreText.text = "HIGHSCORE: " + highscore.ToString();
+        PlayerCharacter player = mc.GetComponent<PlayerCharacter>();
+        gold = player.getGold();
+        goldText.text = "Gold: " + gold.ToString();
+    }
 }
