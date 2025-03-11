@@ -18,7 +18,7 @@ public class UpgradeAnvil : MonoBehaviour
     {
         
     }
-    public void Operate(){
+    public void OperateB(){
         int upgrade;
         PlayerCharacter player = otherGameObject.GetComponent<PlayerCharacter>();
         //This section will be to check for gold in the future

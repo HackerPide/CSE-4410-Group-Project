@@ -54,10 +54,13 @@ public class PlayerCharacter : MonoBehaviour
     }
     public bool Buy(int cost){
         bool afford = false;
-        if(gold> cost){
+        if(gold >= cost){
             gold-=cost;
             afford = true;
         }
         return afford;
+    }
+    public int getGold(){
+        return gold;
     }
 }
