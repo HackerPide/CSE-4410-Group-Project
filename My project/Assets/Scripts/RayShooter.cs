@@ -62,12 +62,10 @@ public class RayShooter : MonoBehaviour
                 // If the ray had hit an enemy, (that is, if "target" isn't null),
                 // indicate that an enemy was hit.
                 // Otherwise, place a sphere.
-                /*if (target != null) {
+                if (target != null) {
                     //Debug.Log("Target hit!");
                     target.ReactToHit(damage);
-                } else {
-                    StartCoroutine(SphereIndicator(hit.point));
-                }*/
+                }
                 Instantiate(bulletHoleGraphic, hit.point, Quaternion.Euler(0, 180, 0));
             }
         }
