@@ -24,6 +24,18 @@ public class FPSInput : MonoBehaviour {
 			allowedToMove = true;
 	}
 	
+	private void OnEnable() {
+        Messenger.AddListener(GameEvent.PLAYER_DEATH, OnPlayerDeath);
+    }
+
+    private void OnDisable() {
+        Messenger.RemoveListener(GameEvent.PLAYER_DEATH, OnPlayerDeath);
+    }
+
+    private void OnPlayerDeath() {
+        allowedToMove = false;
+    }
+	
 	// Update is called once per frame
 	void Update() {
 		SetMovement();

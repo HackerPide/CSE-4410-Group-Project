@@ -17,15 +17,31 @@ public class MouseLook : MonoBehaviour {
     public float maximumVert = 45.0f;
 
     private float verticalRot = 0;
+    private bool canRotate = true;
+
+    private void OnEnable() {
+        Messenger.AddListener(GameEvent.PLAYER_DEATH, OnPlayerDeath);
+    }
+
+    private void OnDisable() {
+        Messenger.RemoveListener(GameEvent.PLAYER_DEATH, OnPlayerDeath);
+    }
+
+    private void OnPlayerDeath() {
+        canRotate = false;
+    }
 
     void Start() {
         Rigidbody body = GetComponent<Rigidbody>();
         if (body != null) {
             body.freezeRotation = true;
         }
+        canRotate = true;
     }
 
     void Update() {
+        if (!canRotate) return;
+        
         if (axes == RotationAxes.MouseX) {
             transform.Rotate(0, Input.GetAxis("Mouse X") * sensitivityHor, 0);
         } 
