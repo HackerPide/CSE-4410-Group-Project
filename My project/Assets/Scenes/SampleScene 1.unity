@@ -3417,9 +3417,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d046015efa1f0a42801d1e05691391d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c9681f6256203a4c9f140ceac0b3768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  muzzleFlash: {fileID: 1000012600307132, guid: e7ea3b8ff4715734590357407449d298, type: 3}
+  bulletHoleGraphic: {fileID: 1000010355441670, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
