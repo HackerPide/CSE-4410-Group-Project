@@ -12,15 +12,18 @@ public class SceneController : MonoBehaviour {
     }
 
     void Update() {
-        for (int i = 0; i < numEnemy; i++)
+        if (enemy == null)
         {
-            enemy = Instantiate(enemyPrefab) as GameObject;
-            enemy.transform.position = new Vector3(5, 1, 0);
-            float angle = Random.Range(0, 360);
-            enemy.transform.Rotate(0, angle, 0);
+            for (int i = 0; i < numEnemy; i++)
+            {
+                enemy = Instantiate(enemyPrefab) as GameObject;
+                enemy.transform.position = new Vector3(5, 1, 0);
+                float angle = Random.Range(0, 360);
+                enemy.transform.Rotate(0, angle, 0);
+            }
+            roundNum++;
+            numEnemy *= 2;
         }
-        roundNum++;
-        numEnemy *= 2;
         
     }
 }
