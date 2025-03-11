@@ -14,12 +14,12 @@ public class ScoreManager : MonoBehaviour
 
     private void OnEnable() {
         Messenger.AddListener(GameEvent.ENEMY_DEATH, OnScoreChange);
-        Messenger.AddListener(GameEvent.PLAYER_LIFE_STATUS, OnPlayerDeath);
+        Messenger.AddListener(GameEvent.PLAYER_RESET, OnReset);
     }
 
     private void OnDisable() {
         Messenger.RemoveListener(GameEvent.ENEMY_DEATH, OnScoreChange);
-        Messenger.RemoveListener(GameEvent.PLAYER_LIFE_STATUS, OnPlayerDeath);
+        Messenger.RemoveListener(GameEvent.PLAYER_RESET, OnReset);
     }
 
     private void OnScoreChange() {
@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void OnPlayerDeath() {
+    private void OnReset() {
         score = 0;
     }
 
