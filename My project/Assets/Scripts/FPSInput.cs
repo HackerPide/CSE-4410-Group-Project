@@ -16,21 +16,22 @@ public class FPSInput : MonoBehaviour {
     }
 
     private void OnEnable() {
-		Messenger.AddListener(GameEvent.PLAYER_LIFE_STATUS, OnPlayerLifeChange);
+		Messenger.AddListener(GameEvent.PLAYER_DEATH, OnDeath);
+        Messenger.AddListener(GameEvent.PLAYER_RESET, OnReset);
     }
 
     private void OnDisable()
     {
-        Messenger.RemoveListener(GameEvent.PLAYER_LIFE_STATUS, OnPlayerLifeChange);
+        Messenger.RemoveListener(GameEvent.PLAYER_DEATH, OnDeath);
+		Messenger.RemoveListener(GameEvent.PLAYER_RESET, OnReset);
     }
 
-    private void OnPlayerLifeChange() {
-		if (alive == true) {
-			alive = false;
-		}
-		else {
-			alive = true;
-		}
+    private void OnDeath() {
+		alive = false;
+	}
+
+	private void OnReset() {
+		alive = true;
 	}
 
     // Update is called once per frame

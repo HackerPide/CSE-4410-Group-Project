@@ -11,7 +11,9 @@ public static class GameEvent
     // Player events
     public const string PLAYER_DAMAGE_CHANGED = "PLAYER_DAMAGE_CHANGED";
     public const string PLAYER_HEALTH_CHANGED = "PLAYER_HEALTH_CHANGED";
-    public const string PLAYER_LIFE_STATUS = "PLAYER_LIFE_STATUS";
+    public const string PLAYER_SPEED_CHANGED = "PLAYER_SPEED_CHANGED";
+    public const string PLAYER_DEATH = "PLAYER_DEATH";
+    public const string PLAYER_RESET = "PLAYER_RESET";
 
     // Game events
     public const string NEW_ROUND = "NEW_ROUND";
