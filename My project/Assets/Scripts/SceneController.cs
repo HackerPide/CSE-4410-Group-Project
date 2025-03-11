@@ -5,14 +5,15 @@ using UnityEngine;
 public class SceneController : MonoBehaviour {
     [SerializeField] GameObject enemyPrefab;
     private GameObject enemy;
-    int numEnemy = 5;
+    int numEnemy = 2;
     public int roundNum = 1;
 
     void Start() {
     }
 
     void Update() {
-        if (roundNum == 1) {
+        if (enemy == null)
+        {
             for (int i = 0; i < numEnemy; i++)
             {
                 enemy = Instantiate(enemyPrefab) as GameObject;
@@ -23,5 +24,6 @@ public class SceneController : MonoBehaviour {
             roundNum++;
             numEnemy *= 2;
         }
+        
     }
 }
