@@ -8,7 +8,7 @@ public class RayShooter : MonoBehaviour
     public const int baseDamage = 1;
 
     public Transform attackPoint;
-    public ParticleSystem muzzleFlash;
+    // public ParticleSystem muzzleFlash;
     public GameObject bulletHoleGraphic;
 
     // Private variable that has a reference to the camera
@@ -52,7 +52,7 @@ public class RayShooter : MonoBehaviour
             // Create a ray by calling ScreenPointToRay
             // Pass in the point, as this is used as the origin for the ray
             Ray ray = cam.ScreenPointToRay(point);
-            muzzleFlash.Play();
+            // muzzleFlash.Play();
             // Create a RaycastHit object to figure out where the ray hit
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
