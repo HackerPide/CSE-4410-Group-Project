@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class RayShooter : MonoBehaviour
 {
+    [SerializeField] AudioSource soundSource;
+    [SerializeField] AudioClip ShootingSound;
+
     public int damage = 1;
     public const int baseDamage = 1;
+
 
     public Transform attackPoint;
     public ParticleSystem muzzleFlash;
@@ -52,7 +56,12 @@ public class RayShooter : MonoBehaviour
             // Create a ray by calling ScreenPointToRay
             // Pass in the point, as this is used as the origin for the ray
             Ray ray = cam.ScreenPointToRay(point);
+
             muzzleFlash.Play();
+
+            //Audio plays
+            soundSource.PlayOneShot(ShootingSound);
+
             // Create a RaycastHit object to figure out where the ray hit
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit)) {
@@ -66,9 +75,11 @@ public class RayShooter : MonoBehaviour
                 // indicate that an enemy was hit.
                 // Otherwise, place a sphere.
                 if (target != null) {
-                    //Debug.Log("Target hit!");
+                    Debug.Log("Target hit!");
                     target.ReactToHit(damage);
                 }
+                
+
                 Instantiate(bulletHoleGraphic, hit.point, Quaternion.Euler(0, 180, 0));
                 
             }
