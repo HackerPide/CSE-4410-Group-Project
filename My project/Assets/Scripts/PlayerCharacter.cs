@@ -13,16 +13,23 @@ public class PlayerCharacter : MonoBehaviour
     private void OnEnable()
     {
         Messenger<int>.AddListener(GameEvent.PLAYER_HEALTH_CHANGED, OnHealthChanged);
+        Messenger.AddListener(GameEvent.ENEMY_DEATH, OnEnemyDeath);
     }
 
     private void OnDisable()
     {
         Messenger<int>.RemoveListener(GameEvent.PLAYER_HEALTH_CHANGED, OnHealthChanged);
+        Messenger.RemoveListener(GameEvent.ENEMY_DEATH, OnEnemyDeath);
     }
 
     private void OnHealthChanged(int value)
     {
         maxHealth = baseHealth + health;
+    }
+
+    private void OnEnemyDeath()
+    {
+        gold += 1;
     }
 
     void Start()
@@ -35,6 +42,7 @@ public class PlayerCharacter : MonoBehaviour
     {
         health -= damage;
         Debug.Log($"Health: {health}");
+        Messenger<int>.Broadcast(GameEvent.PLAYER_DAMAGED, damage);
 
         // Check if player has died
         if (health <= 0 && !isDead)

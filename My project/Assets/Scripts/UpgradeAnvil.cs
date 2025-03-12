@@ -27,15 +27,15 @@ public class UpgradeAnvil : MonoBehaviour
             switch(upgrade){
                 case 0:
                 Debug.Log("Health upgrade");
-                Messenger.Broadcast(GameEvent.PLAYER_HEALTH_CHANGED);
+                Messenger<int>.Broadcast(GameEvent.PLAYER_HEALTH_CHANGED, 5);
                 break;
                 case 1:
                 Debug.Log("Speed upgrade");
-                Messenger.Broadcast(GameEvent.PLAYER_SPEED_CHANGED);
+                Messenger<int>.Broadcast(GameEvent.PLAYER_SPEED_CHANGED, 5);
                 break;
                 case 2:
                 Debug.Log("Damage Upgrade");
-                Messenger.Broadcast(GameEvent.PLAYER_DAMAGE_CHANGED);
+                Messenger<int>.Broadcast(GameEvent.PLAYER_DAMAGE_CHANGED, 1);
                 break;
             }
         }

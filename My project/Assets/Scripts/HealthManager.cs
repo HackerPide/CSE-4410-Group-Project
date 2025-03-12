@@ -8,8 +8,37 @@ public class HealthManager : MonoBehaviour
 
     // Initialize healthbar image and amount
     public Image healthBar;
-    public float healthAmount = 100f;
+    public float healthAmount = 5.0f;
+    public const float baseHealthAmount = 5.0f;
 
+    private void OnEnable()
+    {
+        Messenger<int>.AddListener(GameEvent.PLAYER_HEALTH_CHANGED, OnHealthChanged);
+        Messenger.AddListener(GameEvent.PLAYER_DEATH, OnPlayerDeath);
+        Messenger<int>.AddListener(GameEvent.PLAYER_DAMAGED, OnPlayerHit);
+    }
+
+    private void OnDisable()
+    {
+        Messenger<int>.RemoveListener(GameEvent.PLAYER_HEALTH_CHANGED, OnHealthChanged);
+        Messenger.RemoveListener(GameEvent.PLAYER_DEATH, OnPlayerDeath);
+        Messenger<int>.RemoveListener(GameEvent.PLAYER_DEATH, OnPlayerHit);
+    }
+
+    private void OnHealthChanged(int value)
+    {
+        healthAmount = baseHealthAmount + healthAmount;
+    }
+
+    private void OnPlayerDeath()
+    {
+        healthAmount = baseHealthAmount;
+    }
+
+    private void OnPlayerHit(int value)
+    {
+        takeDamage(value);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +53,7 @@ public class HealthManager : MonoBehaviour
         {
             Application.LoadLevel(Application.loadedLevel);
         }
-
+        /*
         if (Input.GetKeyDown(KeyCode.Return))
         {
             //FIXME Add logic for receiving damage
@@ -36,6 +65,7 @@ public class HealthManager : MonoBehaviour
             //FIXME Add logic for healing damage
             Heal(5);
         }
+        */
     }
 
     public void takeDamage(float damage)
