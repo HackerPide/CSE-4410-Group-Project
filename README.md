@@ -14,7 +14,7 @@ Contributions:
 - Can Seferoglu 
   - Managed the team members and the project git repository
   - Fixed bugs, finalized, and built/compiled the game
-  - Added the initial scripts and the gun shooting sounds
+  - Wrote and added lots of materials, prefabs, scripts, and the gun shooting sounds
 - Cameron Hartling
   - Wrote main game logic code and implementation
     - Wrote code for and implemented a messenger system
