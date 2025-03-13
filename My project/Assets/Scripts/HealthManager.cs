@@ -8,8 +8,9 @@ public class HealthManager : MonoBehaviour
 
     // Initialize healthbar image and amount
     public Image healthBar;
-    public float healthAmount = 100f;
-
+    public int healthAmount = 5;
+	public GameObject otherGameObject;
+	// PlayerCharacter player = otherGameObject.GetComponent<PlayerCharacter>();
 
     // Start is called before the first frame update
     void Start()
@@ -38,17 +39,20 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void takeDamage(float damage)
-    {
+    public void takeDamage(int damage)
+    {	
+		PlayerCharacter player = otherGameObject.GetComponent<PlayerCharacter>();
         healthAmount -= damage;
-        healthBar.fillAmount = healthAmount / 100f;
+		player.Hurt(damage);
+        healthBar.fillAmount = healthAmount / 100;
     }
 
-    public void Heal(float healingAmount)
+    public void Heal(int healingAmount)
     {
+		PlayerCharacter player = otherGameObject.GetComponent<PlayerCharacter>();
         healthAmount += healingAmount;
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
 
-        healthBar.fillAmount = healthAmount / 100f;
+        healthBar.fillAmount = healthAmount / 100;
     }
 }

@@ -12,7 +12,7 @@ public class RayShooter : MonoBehaviour
 
 
     public Transform attackPoint;
-    public ParticleSystem muzzleFlash;
+    // public ParticleSystem muzzleFlash;
     public GameObject bulletHoleGraphic;
 
     // Private variable that has a reference to the camera
@@ -57,7 +57,7 @@ public class RayShooter : MonoBehaviour
             // Pass in the point, as this is used as the origin for the ray
             Ray ray = cam.ScreenPointToRay(point);
 
-            muzzleFlash.Play();
+            // muzzleFlash.Play();
 
             //Audio plays
             soundSource.PlayOneShot(ShootingSound);
